@@ -1,0 +1,14 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reply</title>
+<style>body{font:18px -apple-system,system-ui,sans-serif;background:#111;color:#eee;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;padding:16px;text-align:center}a{color:#fff;background:#2563eb;padding:14px 22px;border-radius:12px;text-decoration:none;display:inline-block;margin-top:12px}</style>
+</head><body><div><div id="m">Opening your reply…</div><a id="go" href="#">Tap to open the reply</a></div>
+<script>
+// Opens Messages with the reply typed. Nothing is stored or sent from this page.
+var q=new URLSearchParams(location.search), t=(q.get('t')||'').replace(/[^0-9+]/g,''), b=q.get('b')||'';
+var ios=/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
+var url='sms:'+(t.charAt(0)=='+'?t:'+'+t)+(ios?'&':'?')+'body='+encodeURIComponent(b);
+document.getElementById('m').textContent=b?('Reply: "'+b+'"'):'No reply set';
+document.getElementById('go').href=url;
+if(t&&b) location.href=url;
+</script></body></html>
